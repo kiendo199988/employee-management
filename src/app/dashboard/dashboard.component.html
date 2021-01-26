@@ -1,0 +1,30 @@
+
+    
+<h3>Top Employees</h3>
+<div class="grid grid-pad">
+
+
+    <a class="col-1-4" *ngFor="let employee of employees" routerLink="/employee-detail/{{employee.id}}">
+      <div class="module department">
+        <h4>{{employee.first_name}}</h4>
+      </div></a>
+</div>
+
+<h3>Top Departments</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let department of departments" class="col-1-4" routerLink="/detail/{{department.id}}">
+    <div class="module department">
+      <h4>{{department.name}}</h4>
+    </div>
+  </a>
+</div>
+
+<h3>Top Tasks</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let task of tasks" class="col-1-4" routerLink="/task-det/{{task.id}}">
+    <div class="module department">
+      <h4>{{task.name}}</h4>
+    </div>
+  </a>
+</div>
+

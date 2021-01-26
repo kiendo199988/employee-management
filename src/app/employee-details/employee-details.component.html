@@ -1,0 +1,28 @@
+
+<div *ngIf="employee">
+
+    <h2>{{employee.first_name | uppercase}} Details</h2>
+    <div><span>id: </span>{{employee.id}}</div>
+    <div>
+      <label>First name:
+        <mat-form-field><input matInput [(ngModel)]="employee.first_name"/></mat-form-field>
+      </label>
+      <label>First name:
+     <mat-form-field><input matInput [(ngModel)]="employee.last_name"/></mat-form-field>
+    </label>
+      <label>Birthday:
+        <mat-form-field><input matInput [(ngModel)]="employee.birth_date"/></mat-form-field>
+      </label>
+      <label>Department:
+        <!-- <mat-form-field><input matInput [(ngModel)]="employee.department_id"/></mat-form-field> -->
+    <select class="btn btn-outline-primary" [(ngModel)]='employee.department_id' name="EmpDep">
+          <option *ngFor="let dep of departments" [value] = "dep.id">
+            {{dep.id}} - {{dep.name}}
+          </option>
+    </select>
+      </label>
+    </div>
+  </div>
+
+  <button (click)="save()">save</button>
+  <button (click)="GoBack()">go back</button>

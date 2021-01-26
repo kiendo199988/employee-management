@@ -1,0 +1,56 @@
+<div class="mydepartments">
+<br><h3><b>My departments</b></h3><br>
+<ul class="departments">
+    <li *ngFor="let department of departments">
+        <a routerLink="/detail/{{department.id}}">
+        <span class="badge">{{department.id}}
+        </span>{{department.name}}
+        </a>
+        <button class="delete" title="delete department" (click)="delete(department)">x</button>
+    </li> 
+</ul>
+</div>
+<div>
+    <div class="mat-headline">Create new department</div>
+    <mat-form-field><input #departmentName matInput [(ngModel)]="newName" placeholder="name"></mat-form-field>&nbsp;
+    <mat-form-field><input #departmentBuilding matInput [(ngModel)]="newBuilding" placeholder="building(optional)"></mat-form-field><br>
+    <button mat-raised-button (click)="add(departmentName.value,departmentBuilding.value); departmentName.value=''; departmentBuilding.value=''">Create</button><br><br>
+ 
+</div>
+
+<div class="mat-headline">Add employee to department</div>
+    
+   <label>Employee: </label><br>
+    <select class="btn btn-outline-primary" [(ngModel)]="selectedEmpNo">
+      <option *ngFor="let emp of employees" [value] = "emp.id">
+        {{emp.id}} - {{emp.first_name}}
+      </option>
+    </select>
+    <br><br>The selected Employee Number is {{selectedEmpNo}}
+    <br><br>
+    <label>Department: </label><br>
+    <select class="btn btn-outline-primary" [(ngModel)]='changedEmpDepNo' name="EmpDep">
+          <option *ngFor="let dep of departments" [value] = "dep.id">
+            {{dep.id}} - {{dep.name}}
+          </option>
+    </select><br>
+    <form (submit) = "ChangeEmpDetail()"><br>
+    
+    
+    <button mat-raised-button onclick="location.href = '';"  ngbButtonLabel type="submit">Change</button>
+    </form>
+<br>
+
+<div class="mat-headline">Sort Departments</div>
+<button mat-raised-button (click)="sortbyId()">Sort by ID</button>
+<br><br>
+<button mat-raised-button (click)="sortbyName()">Sort by Name</button>
+<br><br>
+
+<div>
+  <div class="mat-headline">Search for department</div>
+  <input style="padding:8px" [(ngModel)]="value" placeholder="Search for department name"/>&nbsp;
+  <button mat-raised-button (click)="search(value)">Search</button><br>
+</div><br>
+
+<app-department-search [filteredDepartments]="filteredDepartments"></app-department-search>

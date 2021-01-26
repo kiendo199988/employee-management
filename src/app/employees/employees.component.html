@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<body>
+        
+    
+    <!--table employees-->
+    <div class="table-responsive">
+        <button class="btn-primary" ngbButtonLabel (click)="sortbyId()">Sort By ID</button>
+        <button class="btn-primary" ngbButtonLabel (click)="sortbyFirstName()">Sort By First Name</button>
+        <button class="btn-primary" ngbButtonLabel (click)="sortbyLastName()">Sort By Last Name</button>
+        <button class="btn-primary" ngbButtonLabel (click)="sortbyDepartmentId()">Sort By Department</button>
+        <button class="btn-primary" ngbButtonLabel (click)="sortbyBirthDate()">Sort By Birthdate</button>
+    <table  class="table table-bordered table-dark">
+            <tr>
+              <th scope="col">Employee Id</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Department Id</th>
+              <th scope="col">Birth Date</th>
+              <th id="deleteEmpCells" scope="col">Delete Employee</th>
+            </tr>
+            <tr  *ngFor = "let employee of employees "  >
+              <th scope="row">{{employee.id}}</th>
+              <td>{{employee.first_name}}</td>
+              <td>{{employee.last_name}}</td>
+              <td>{{employee.department_id}}</td>
+              <td>{{employee.birth_date}}</td>
+              <td id="deleteEmpCells"><button class="btn-primary" ngbButtonLabel id="deleteButton" title="delete employee" (click)="DeleteEmployee(employee)">x</button></td>              
+            </tr>
+    </table>
+    
+
+    </div>
+    <br>
+    <hr>
+    <!--form for adding employee-->
+    <h3>Adding a new employee:</h3>
+     <form (submit) = "AddNewEmployee()">
+        <input [(ngModel)]='newEmpFirstName' class="form-control mb-2" id="inlineFormInput" type="text"  name ="EmpName" placeholder="New employee first name..."><br>
+        <input [(ngModel)]='newEmpLastName' class="form-control mb-2" id="inlineFormInput" type="text"  name ="EmpName" placeholder="New employee last name..."><br>
+        <input [(ngModel)]='birthDate' class="form-control mb-2" id="inlineFormInput" type="text"  name ="EmpName" placeholder="Birth date (eg: yyyy-mm-dd)..."><br>
+        <div ngbDropdown class="d-inline-block">
+        <select class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle [(ngModel)]='newEmpDepNo' name="EmpDep">
+            <option  *ngFor="let dep of departments" [value] = "dep.id">
+              {{dep.id}} - {{dep.name}}
+            </option>
+          </select></div><br> <p>Selected department is {{newEmpDepNo}}</p>
+
+
+       <button class="btn-primary" ngbButtonLabel  type="submit" >Add new employee</button>
+    </form>
+    
+    <hr>
+    
+  
+    <!--form for changing employee details-->   
+   <h3>Select the employee number that you want to change his/her details:</h3>
+   
+   
+   
+    <ul class="employeesList">
+      <li *ngFor="let employee of employees">
+          <a routerLink="/employee-detail/{{employee.id}}">
+          <span class="badge">{{employee.id}}
+          </span>{{employee.first_name}}
+          </a>
+      </li> 
+  </ul>
+   <hr>
+    
+
+
+    <!--form for showing employee details-->
+
+    <h3>Select the employee number that you want to view his/her details:</h3>
+   
+      <select class="btn btn-outline-primary" [(ngModel)]="selectedEmpNo2">
+        <option *ngFor="let emp of employees" [value] = "emp.id">
+          {{emp.id}} - {{emp.first_name}}
+        </option>
+      </select>
+     <br><br> <button class="btn-primary" ngbButtonLabel (click)="ViewEmployeeDetail()">View Details</button>
+      <br><br><app-employee-details2 [Emp]="selectedEmp"></app-employee-details2>
+       
+      
+      <hr>
+    <!--search-->
+    <div>
+    <h3>Search for an employee by entering his or her name:</h3>
+    <input class="form-control mb-2" placeholder="Andreea..." type="text" [(ngModel)]="searchText" >
+      <br><button  class="btn-primary" ngbButtonLabel (click)="SearchEmployeeByName()">Search</button>
+    </div><br>
+    <app-employee-search [filteredEmployees]="filteredEmployees"></app-employee-search>
+
+    
+   
+</body>
+</html>
+   

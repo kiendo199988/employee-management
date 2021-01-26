@@ -1,0 +1,10 @@
+<div *ngIf="filteredDepartments">
+<ul class="departments">
+<li *ngFor="let department of filteredDepartments">
+    <a routerLink="/detail/{{department.id}}">
+        <span class="badge">{{department.id}}
+        </span>{{department.name}}
+        </a>
+    </li>
+</ul>
+</div>

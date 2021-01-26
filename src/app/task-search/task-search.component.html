@@ -1,0 +1,24 @@
+<!-- <div *ngIf = "filteredTasks">
+    
+    <ul class="tasks">
+        <li *ngFor="let task of tasks">
+          <span class="badge">{{task.id}}</span> {{task.name}} executed by: {{task.employee}} - department:
+          {{task.department}}-by July
+        </li>
+      </ul>
+
+    </div> -->
+
+    <div id="search-component">
+        <h4><label for="search-box">Task Search</label></h4>
+      
+        <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+      
+        <ul class="search-result">
+          <li *ngFor="let task of tasks$ | async" >
+            <a routerLink="/task-det/{{task.id}}">
+              {{task.name}}
+            </a>
+          </li>
+        </ul>
+      </div>

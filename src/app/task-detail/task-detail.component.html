@@ -1,0 +1,14 @@
+<div *ngIf="task">
+
+    <div>{{task.name | uppercase}} Details</div>
+    <div><span>id: </span>{{task.id}}</div>
+    <div>
+      <label>name:
+        <mat-form-field><input matInput [(ngModel)]="task.name"/></mat-form-field>
+      </label>
+    </div>
+  </div>
+
+  <button (click)="goBack()">go back</button>
+  <button (click)="saveT()">save</button>
+

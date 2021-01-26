@@ -1,0 +1,27 @@
+<div *ngIf="department">
+
+        <h2>{{department.name | uppercase}} Details</h2>
+        <div><span>id: </span>{{department.id}}</div>
+        <div>
+          <label>name:
+            <mat-form-field><input matInput [(ngModel)]="department.name"/></mat-form-field>
+          </label>
+        </div>
+        <div>
+          <label>building:
+            <mat-form-field><input matInput [(ngModel)]="department.building"/></mat-form-field>
+          </label>
+        </div>
+        <label>employees:</label>
+        <ul>
+          <li *ngFor="let employee of department.employees" [class.selected]="employee">
+            <a routerLink="/employee-detail/{{employee}}">
+              <span class="badge">{{employee}}
+              </span>{{employee.name}}
+              </a>
+          </li>
+        </ul>
+      </div>
+
+      <button (click)="save()">save</button>
+      <button (click)="goBack()">go back</button>

@@ -1,0 +1,172 @@
+<!-- <!DOCTYPE html>
+<html>
+
+<body> -->
+
+
+  <!-- <h2>My tasks</h2>
+  <tr class ="tasks" *ngFor="let task of tasks">
+    <td> {{task.id}}</td>
+    <td> {{task.name}}</td>
+    <td>
+      <table >
+         <tr>
+           <td *ngFor="let employee of employees">{{employee.empNo}} {{employee.empName}}</td>
+         </tr>
+      </table>
+    </td>
+    <td> {{item.fisrt}}</td>
+    <td> {{item.second}}</td>
+</tr> -->
+  <!-- <ul class="tasks">
+    <li *ngFor="let task of tasks">
+
+      <span class="badge">{{task.id}}</span> {{task.name}} executed by: {{task.employee}} - department:
+      {{task.department}}-by July
+    </li>
+  </ul> -->
+  <div class="mat-headline"><b>My tasks</b></div>
+
+  <ul class="tasks">
+      <li *ngFor="let task of tasks" [class.selected]="task === selectedTask">
+          <a routerLink="/task-det/{{task.id}}">
+          <span class="badge">{{task.id}}
+          </span>{{task.name}}
+          </a>
+          <button class="delete" title="delete task" (click)="delete(task)">x</button>
+      </li> 
+  </ul>
+
+  <div>
+      <div class="mat-title">Create new task</div>
+      <input #taskName matInput [(ngModel)]="newName" placeholder="Task name"><br>
+      <input #taskName matInput [(ngModel)]="dueDate" placeholder="due date"><br>
+
+      <label>Department: </label><br>
+      <select class="btn btn-outline-primary" [(ngModel)]='newDepNo' name="EmpDep">
+            <option *ngFor="let dep of departments" [value] = "dep.id">
+              {{dep.id}} - {{dep.name}}
+            </option>
+       </select><br>
+      <!--<p>selected department id is {{newDepNo}}</p><br>
+      <label>Employees: </label><br>
+      <select class="btn btn-outline-primary" [(ngModel)]='newEmpId' name="EmpDep">
+            <option *ngFor="let emp of employees" [value] = "emp.id">
+              {{emp.id}} - {{emp.first_name}}
+            </option>
+      </select><br>
+      <p>selected employee id is {{newEmpId}}</p>-->
+      <button mat-raised-button (click)="addT()">Create</button><br><br>  
+     
+  </div>
+
+ 
+
+  <div>
+      <div class="mat-title">Search for task</div>
+      <input style="padding:8px" [(ngModel)]="value" placeholder="Search for task by name"/>&nbsp;
+      <button mat-raised-button (click)="onTest(value)">Search</button><br>
+    </div>
+
+  <!--form for adding task-->
+  
+  <!-- <form (submit)="AddNewTask()">
+    <label>Task Number: </label><input [(ngModel)]='newTaskNo' class="NewEmployeekNo" type="text" name="TaskNo"
+      placeholder="New task number..."><br>
+    <label>Task Name: </label><input [(ngModel)]='newTaskName' class="NewName" type="text" name="Name"
+      placeholder="New task name..."><br>
+      <label>Employee assigned: </label><input [(ngModel)]='empName' class="NewEmployeeAssigned" type="text" name="EmployeeAss"
+      placeholder="Employee's name..."><br>
+      <label>Department: </label><input [(ngModel)]='depName' class="NewDepartment" type="text" name="DepartmentAss"
+      placeholder="Department..."><br>
+    <button class="button" type="submit">Add new task</button>
+  </form> -->
+  
+  <!--form for changing tasks details-->
+
+  <!-- <form (submit)="ChangeTaskName(selectedTask)">
+    <label>New name: </label> <input class="tbChangeName" type="text" [(ngModel)]='changedTaskName' name="changeNameId"
+      placeholder="Change Task Name...">
+    &nbsp;&nbsp;
+    <button class="button" type="submit">Change</button>
+  </form> -->
+
+  
+
+
+  <!-- deleting a task -->
+ 
+
+<!--search-->
+<!-- <div>
+  <h3>Search for a task by entering its name:</h3>
+  <input class="form-control mb-2" placeholder="...." type="text" [(ngModel)]="searchText" >
+    <br><button  class="btn-primary" ngbButtonLabel (click)="SearchTaskByName()">Search</button>
+  </div><br>
+  <app-task-search [filteredTasks]="filteredTasks"></app-task-search> -->
+   <!-- <h3>Delete the last task:</h3> -->
+
+
+    <!-- my previous code -->
+
+
+   <!-- <div>
+
+      <div class="mat-title">Create new task</div>
+    <mat-form-field><input matInput [(ngModel)]="newTaskNo" placeholder="id"></mat-form-field>&nbsp;
+    <mat-form-field><input matInput [(ngModel)]="newTaskName" placeholder="name"></mat-form-field>&nbsp;
+    <mat-form-field><input matInput [(ngModel)]="empName" placeholder="employee"></mat-form-field>&nbsp;
+    <mat-form-field><input matInput [(ngModel)]="depName" placeholder="department"></mat-form-field>&nbsp;
+      <button mat-raised-button
+        (click)="onSelect1({id: newTaskNo, name: newTaskName, employee: empName, department: depName})">Create</button>
+    </div>
+    <br>
+  
+    <!-dropdownbox for task number-->
+    <!-- <div class="mat-title">Select the task number you want to change the name for:</div>
+  
+    <select class="dropDownBox" [(ngModel)]="selectedTaskNo">
+      <option *ngFor="let task of tasks" [value]="task.id">
+        {{task.id}}
+      </option>
+    </select>
+    <br>The selected task number is: {{selectedTaskNo}}
+   -->
+
+  
+<!--   
+   <div>
+      <label>New name: </label> <mat-form-field><input matInput [(ngModel)]='changedTaskName' placeholder="Change Task Name...">
+    </mat-form-field>&nbsp;
+      <button  mat-raised-button (click)="ChangeTaskName(selectedTaskNo)">Change</button>
+    </div> -->
+
+<!-- 
+   <div class="mat-title">Delete the last task:</div>
+   <select [(ngModel)]="taskToDelete">
+     <option *ngFor="let task of tasks">
+       {{task.name}}
+     </option>
+   </select>
+ 
+   <button mat-raised-button (click)="onSelect2(taskToDelete)">Delete</button>
+   <p><span>You selected the task: </span>{{taskToDelete}}</p>
+   <br>
+ 
+   <br> -->
+
+
+  <!-- <div>
+    <div class="mat-title">Search for task</div>
+    <input style="padding:8px" [(ngModel)]="value" placeholder="Search for task by name"/>&nbsp;
+    <button mat-raised-button (click)="SearchTask(value)">Search</button><br>
+  </div>
+  
+  <app-task-detail [task]=selectedTask></app-task-detail>research this 
+   --> 
+
+
+<!-- 
+</body>
+
+</html> -->
